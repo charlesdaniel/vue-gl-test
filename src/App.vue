@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-  <vgl-namespace style="display: flex;">
+  <vgl-namespace>
     <vgl-scene name="scn">
       <vgl-box-geometry name="cube" width=3 height=5 depth=10></vgl-box-geometry>
       <vgl-mesh-standard-material name="std"></vgl-mesh-standard-material>
@@ -8,21 +8,20 @@
       <vgl-ambient-light color="#ffeecc"></vgl-ambient-light>
       <vgl-directional-light position="0 1 1"></vgl-directional-light>
     </vgl-scene>
-    <vgl-renderer scene="scn" camera="cmr1" antialias style="height: 100vh; flex: 1;">
-      <vgl-perspective-camera name="cmr1" orbit-position="20 1 0.5"></vgl-perspective-camera>
-    </vgl-renderer>
-    <div style="width: 1px;"></div>
-    <vgl-renderer scene="scn" camera="cmr2" antialias style="height: 100vh; flex: 1;">
-      <vgl-perspective-camera name="cmr2" orbit-position="20 2 0.5"></vgl-perspective-camera>
-    </vgl-renderer>
-    <div style="width: 1px;"></div>
-    <vgl-renderer scene="scn" camera="cmr3" antialias style="height: 100vh; flex: 1;">
-      <vgl-perspective-camera name="cmr3" orbit-position="20 3 0.5"></vgl-perspective-camera>
-    </vgl-renderer>
-    <div style="width: 1px;"></div>
-    <vgl-renderer scene="scn" camera="cmr4" antialias style="height: 100vh; flex: 1;">
-      <vgl-perspective-camera name="cmr4" orbit-position="30 1 1.5"></vgl-perspective-camera>
-    </vgl-renderer>
+    <div class="layout">
+      <vgl-renderer id="cmr1" scene="scn" camera="cmr1" antialias>
+        <vgl-perspective-camera name="cmr1" orbit-position="20 1 0.5"></vgl-perspective-camera>
+      </vgl-renderer>
+      <vgl-renderer id="cmr2" scene="scn" camera="cmr2" antialias>
+        <vgl-perspective-camera name="cmr2" orbit-position="20 2 0.5"></vgl-perspective-camera>
+      </vgl-renderer>
+      <vgl-renderer id="cmr3" scene="scn" camera="cmr3" antialias>
+        <vgl-perspective-camera name="cmr3" orbit-position="20 3 0.5"></vgl-perspective-camera>
+      </vgl-renderer>
+      <vgl-renderer id="cmr4" scene="scn" camera="cmr4" antialias>
+        <vgl-perspective-camera name="cmr4" orbit-position="30 1 1.5"></vgl-perspective-camera>
+      </vgl-renderer>
+    </div>
   </vgl-namespace>
   <aside class="control-panel">
     Position:
@@ -76,4 +75,11 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
+.layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 300px 300px;
+  grid-gap: 10px;
+}
+
 </style>
